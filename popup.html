@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Ping</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            margin: 0;
+            min-height: 180px;
+            padding: 0;
+            width: 384px;
+        }
+
+        h1 {
+            font-family: 'Menlo', monospace;
+            font-size: 22px;
+            font-weight: 400;
+            margin: 0;
+            color: lightskyblue;
+            vertical-align: middle;
+            align-items: center;
+            text-align: center;
+        }
+
+        a.link,
+        a.visted {
+            color: black;
+            outline: 0;
+            text-decoration: none;
+        }
+
+        .container {
+            position: relative;
+            flex-direction: column;
+            text-align: right;
+            max-height: 4%;
+        }
+
+        .containerArchieve {
+            position: relative;
+            flex-direction: column;
+            text-align: left;
+            overflow-y: scroll;
+            max-height: 200px;
+        }
+
+        #editArchieve {
+            position: absolute;
+            top: 0.5%;
+            right: 2%;
+            border-radius: 15px 50px 30px;
+        }
+
+        #deleteArchieve {
+            position: absolute;
+            top: 0.5%;
+            left: 2%;
+            border-radius: 0px 30px 50px 15px;
+            background-color: rgb(132, 252, 212);
+            color: #00b947;
+        }
+
+        .container dt {
+            text-align: left;
+            text-decoration: underline rgb(12, 126, 255);
+            margin-left: 2%;
+            margin-top: 2%;
+        }
+
+        .container dd {
+            text-align: left;
+        }
+
+        .logo-images {
+            width: 40px;
+            height: auto;
+            float: left;
+            margin: 0px;
+        }
+
+        img.site-icon {
+            width: 150px;
+        }
+
+        .deleteButtonModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .editButtonModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .addButtonModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .modal-body {
+            padding-left: 2%;
+        }
+
+        .modal-header {
+            align-items: center;
+            border-bottom: 1.5px solid rgb(182, 182, 182);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 25px;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 0.75px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        .modal-icons {
+            padding-top: 2%;
+            border-top: 1.5px solid rgb(182, 182, 182);
+            height: 20px;
+            width: 100%;
+
+        }
+
+        .modal-edit {
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            padding: 16px;
+        }
+
+        .logo-icon {
+            vertical-align: text-bottom;
+            margin-right: 12px;
+        }
+
+        #userManga {
+            display: block;
+            border-radius: 12px;
+            background-color: rgb(152, 218, 172);
+            border: 2px solid rgb(80, 32, 126);
+            color: #ffffff;
+            text-align: center;
+            font-size: 20px;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            width: 98%;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 4px;
+        }
+
+        #addManga {
+            display: block;
+            border-radius: 8px;
+            background-color: #26ceda;
+            border: 2px solid rgba(28, 43, 180, 0.767);
+            color: #be6643;
+            text-align: center;
+            font-size: 20px;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            width: 98%;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 4px;
+        }
+
+        .addWebsite {
+            display: inline-block;
+            border-radius: 2px;
+            background-color: #13a6b1;
+            border: none;
+            color: #c0da4f;
+            text-align: center;
+            font-size: 10px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 4px;
+        }
+
+        #addManga span,
+        .addWebsite span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        #addManga span:after,
+        .addWebsite span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        #addManga:hover span,
+        .addWebsite:hover span {
+            padding-right: 25px;
+        }
+
+        #addManga:hover span:after,
+        .addWebsite:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .version {
+            color: #444;
+            font-size: 18px;
+        }
+
+        .flex-container {
+            display: inline-block;
+            justify-content: space-between;
+            padding: 10px 22px;
+        }
+
+        .flex {
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+            width: 500px;
+        }
+
+        #addManga:hover,
+        #userManga:hover,
+        .flex:hover {
+            opacity: 0.60;
+        }
+
+        .flex .site-icon {
+            font-size: 40px;
+            color: #2f5876;
+        }
+
+        .close {
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            color: #aaaaaa;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #baseMessage {
+            text-decoration: underline rgb(39, 141, 182);
+            text-align: center;
+        }
+
+        /* #mangaList {
+            margin-bottom: 3%;
+        }
+         */
+
+        .recent-manga {
+            border-radius: 8%;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+            background: rgb(100, 200, 224);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(125, 38, 206);
+            margin-bottom: 0.5%;
+        }
+
+        .recent-manga p {
+            display: inline;
+            text-shadow: #888;
+            position: absolute;
+            width: 95%;
+            height: 100%;
+            margin: 0;
+            line-height: 30px;
+            text-align: center;
+            /* Starting position */
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            /* Apply animation to this element */
+            -moz-animation: scroll-left 12s linear infinite;
+            -webkit-animation: scroll-left 12s linear infinite;
+            animation: scroll-left 12s linear infinite;
+        }
+
+        .recent-manga p a {
+            text-decoration: none !important;
+        }
+
+        /* Move it (define the animation) */
+        @-moz-keyframes scroll-left {
+            0% {
+                -moz-transform: translateX(100%);
+            }
+
+            100% {
+                -moz-transform: translateX(-100%);
+            }
+        }
+
+        @-webkit-keyframes scroll-left {
+            0% {
+                -webkit-transform: translateX(100%);
+            }
+
+            100% {
+                -webkit-transform: translateX(-100%);
+            }
+        }
+
+        @keyframes scroll-left {
+            0% {
+                -moz-transform: translateX(100%);
+                /* Browser bug fix */
+                -webkit-transform: translateX(100%);
+                /* Browser bug fix */
+                transform: translateX(100%);
+            }
+
+            100% {
+                -moz-transform: translateX(-100%);
+                /* Browser bug fix */
+                -webkit-transform: translateX(-100%);
+                /* Browser bug fix */
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='modal-header'>
+        <h1 id='main' class='logo'>
+            <img src='images/haikyuu.jpeg' alt='Image Holder' class='logo-images' style="display:in-lineblock;">
+            Your Personal Manga
+            <span class='version'>(1.0.0)</span>
+        </h1>
+    </div>
+    <button id='addManga' class='addManga' style="text-align: center;">Add Manga Updates Here!</button>
+    <button id='userManga' style="text-align:center">Current Collection</button>
+    <div id='archieveTop' class="container" style="display: none;">
+        <span id="baseMessage" style="font-size: medium;">Gotta Read'em All!</span>
+        <button id="editArchieve">Edit</button>
+        <button id="deleteArchieve">Delete</button>
+        <div id="archieveMain" class="containerArchieve" style="display: none;">
+            <dl id="mangaList">
+            </dl>
+        </div>
+    </div>
+    <div id='addMangaModal' class="addButtonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3 class='styleTest' style="padding-left: 2%;">Add Your Manga & WeebURL Here!</h3>
+            </div>
+            <div class='modal-body'>
+                <form id='inputManga'>
+                    <div>
+                        <label for='webUrl'>Weebsite</label><br>
+                        <input id='weebUrl' type='text' name='webUrls'><br>
+                    </div>
+                    <div>
+                        <label for='mangaName'>Enter Manga Name!</label><br>
+                        <input id='mangaName' list='recordedNames'>
+                        <datalist id='recordedNames'>
+                        </datalist>
+                    </div>
+                    <br>
+                    <div style="vertical-align: middle;">
+                        <label for="date-time">(Optional) Update Times: Default Shown Below</label><br>
+                        <input id="time" list="userTimes" placeholder="12:00pm">
+                        <datalist id="userTimes">
+                            <option value='3:00'>
+                            <option value='6:00'>
+                            <option value='9:00'>
+                            <option value='12:00'>
+                        </datalist>
+                        <input id="ampm" list="AmPm" placeholder="pm">
+                        <datalist id="AmPm">
+                            <option value='am'>
+                            <option value='pm'>
+                        </datalist>
+                        <input id="date" list="userDates" placeholder="Today">
+                        <datalist id="userDates">
+                            <option value='Monday'>
+                            <option value='Tuesday'>
+                            <option value='Wednesday'>
+                            <option value='Thursday'>
+                            <option value='Friday'>
+                            <option value='Saturday'>
+                            <option value='Sunday'>
+                        </datalist>
+                        <input id="frequency" list="userFreq" placeholder="Daily">
+                        <datalist id="userFreq">
+                            <option value='Daily'>
+                            <option value='Weekly'>
+                            <option value='Bi-weekly'>
+                            <option value='Monthly'>
+                        </datalist>
+                    </div>
+                    <br>
+                    <input type='submit' value='Increase Power Level'>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="editMangaModal" class="editButtonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3 class='styleTest' style="padding-left: 2%;">Modify Titles & Urls (Optional)</h3>
+            </div>
+            <div class='modal-body'>
+                <form id='mangaEdits'>
+                    <div class="modal-edit">
+                        <label for='titles'>Current Titles</label><br>
+                        <input id='titles' list='currentTitlesEdit' value="">
+                        <datalist id='currentTitlesEdit'>
+                        </datalist>
+                    </div>
+                    <div class="modal-edit">
+                        <label for='newTitle'>New Title Name</label><br>
+                        <input id='newTitle' type='text' placeholder="Chunchunmaru"><br>
+                    </div>
+                    <div class="modal-edit">
+                        <label for="removeUrl">Weebsite to Remove</label><br>
+                        <input id="urlRemove" list="remove" placeholder="www.kissmanga.com">
+                        <datalist id="remove">
+                        </datalist>
+                    </div>
+                    <br>
+                    <input type='submit' value='Save Changes' style="margin-bottom: 2%;">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="deleteMangaModal" class="deleteButtonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3 class='styleTest' style="padding-left: 2%;">Delete Title From Collection</h3>
+            </div>
+            <div class='modal-body'>
+                <form id='mangaDelete'>
+                    <div class="modal-edit">
+                        <label for='delete'>Current Titles</label><br>
+                        <input id='delete' list='currentTitlesDelete' placeholder="reeeeeeeeee">
+                        <datalist id='currentTitlesDelete'>
+                        </datalist>
+                    </div>
+                    <br>
+                    <input type='submit' value='Save Changes' style="margin-bottom: 2%;">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-icons" style="text-align: center;"><span id='updateMessage'>No Current Updates :(</span>
+    </div>
+    <dl id="recent-updates" style="text-align: center;">
+    </dl>
+    <div class="recent-manga">
+        <p id="recent-manga-text">~Drought~</p>
+    </div>
+    <div class="modal-icons">
+        <div class="flex-containter">
+            <span id="supported-websites" style="text-align: center;">Weebsites Supported</span>
+            <div class="flex">
+                <a href="https://manga4life.com/" class="sites" target="_blank">
+                    <img src='images/manga4life.png' alt='Manga4Life' class='site-icon'>
+                </a>
+            </div>
+            <div class="flex">
+                <a href="https://www.webtoons.com/en/" class="sites" target="_blank">
+                    <img src="images/webtoonlogosmall.png" alt="Webtoon" class="site-icon" height="50px" width="auto">
+                </a>
+            </div>
+            <div class="flex">
+                <a href="https://ww3.mangakakalot.tv/home" class="sites" target="_blank">
+                    <img src="images/mangakakalot.png" alt="Mangakakalot" class="site-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="popupHelper.js"></script>
+<script src='popup.js'>
+</script>
