@@ -185,7 +185,7 @@ function updatePopupStart(titlesDictionary, archieveDictionary) {
         if (mangaInfo.lastUpdated !== false && validCurrentUpdates(manga, mangaInfo, titlesDictionary)) {
             const webUrl = titlesDictionary[manga][0];
             if (validDomains.includes(getDom(webUrl))) {
-                popupRecentUpdates(webUrl, manga, newest)
+                popupRecentUpdates(webUrl, manga)
             }
         }
     })
