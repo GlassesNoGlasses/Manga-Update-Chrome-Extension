@@ -8,4 +8,11 @@ Please feel free to alert any problems and/or suggestions to the code.
 
 Users are free to select frequency of tracking manga, date and time to be notified if there is an update, and edit their manga archieve.//
 
+Steps to use:
+1. Clone Repository.
+3. Head over to chrome://extensions/
+4. Click on "developer mode" in the top-right corner
+5. Load the folder containing the extension files.
+6. Enjoy!
+
 All the best!
