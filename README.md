@@ -42,6 +42,12 @@ Add New Manga/Series (url automatically added); specify the name and (optionally
 <img width="1012" alt="Screen Shot 2022-10-18 at 8 21 16 AM" src="https://user-images.githubusercontent.com/59126714/196430389-d60840b3-74d9-4cba-9cc9-651a296ed074.png">
 
 
+Want to see which website releases the newest chapter first? Add it to the same title name!
+
+<img width="310" alt="Screen Shot 2022-10-18 at 2 49 25 PM" src="https://user-images.githubusercontent.com/59126714/196518458-ba7bf581-7bca-40a9-a45d-15cc2406e77d.png">
+
+
+
 Get Notifications when a new chapter is out and the time of release. See how many series have new chapters released today!
 
 
