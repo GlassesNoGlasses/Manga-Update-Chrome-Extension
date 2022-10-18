@@ -36,7 +36,7 @@ Main HUD
 
 
 
-Add New Manga/Series; specify the name and (optionally) when you would like to scan for new chapters from websites.
+Add New Manga/Series (url automatically added); specify the name and (optionally) when you would like to scan for new chapters from websites.
 
 
 <img width="1012" alt="Screen Shot 2022-10-18 at 8 21 16 AM" src="https://user-images.githubusercontent.com/59126714/196430389-d60840b3-74d9-4cba-9cc9-651a296ed074.png">
