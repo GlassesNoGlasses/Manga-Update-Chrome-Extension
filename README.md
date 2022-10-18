@@ -22,3 +22,46 @@ Steps to Get:
 6. Enjoy!
 
 All the best!
+
+Be reminded to check your daily collection
+
+
+<img width="40" alt="Screen Shot 2022-10-18 at 8 19 28 AM" src="https://user-images.githubusercontent.com/59126714/196430165-fbfcec59-2888-410a-95c9-1354dfd80b74.png">
+
+
+Main HUD
+
+
+<img width="382" alt="Screen Shot 2022-10-18 at 8 20 23 AM" src="https://user-images.githubusercontent.com/59126714/196430197-d0dac324-2fe1-4516-946b-46893b6cf12c.png">
+
+
+
+Add New Manga/Series; specify the name and (optionally) when you would like to scan for new chapters from websites.
+
+
+<img width="1012" alt="Screen Shot 2022-10-18 at 8 21 16 AM" src="https://user-images.githubusercontent.com/59126714/196430389-d60840b3-74d9-4cba-9cc9-651a296ed074.png">
+
+
+Get Notifications when a new chapter is out and the time of release. See how many series have new chapters released today!
+
+
+<img width="342" alt="Screen Shot 2022-10-18 at 8 31 26 AM" src="https://user-images.githubusercontent.com/59126714/196430666-400b6fe3-ffde-49c9-8327-a32be62e1fa7.png">
+
+
+<img width="40" alt="Screen Shot 2022-10-18 at 8 25 23 AM" src="https://user-images.githubusercontent.com/59126714/196431281-f5d4008e-88d0-4445-b1c0-1e67e14e31ee.png">
+
+
+
+
+
+See your Current Collection! Make Edits and Delete series at your convenience.
+
+<img width="382" alt="Screen Shot 2022-10-18 at 8 22 45 AM" src="https://user-images.githubusercontent.com/59126714/196430966-4892e7e2-4b66-43c1-945d-f93c25d9ab31.png">
+
+
+Front-view of when the newest chapters are out with scrolling texts! 
+
+<img width="378" alt="Screen Shot 2022-10-18 at 8 24 20 AM" src="https://user-images.githubusercontent.com/59126714/196431156-4716ac71-3299-4efe-adfc-8a673de144b5.png">
+
+
+
