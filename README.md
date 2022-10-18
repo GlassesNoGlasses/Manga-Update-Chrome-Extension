@@ -8,7 +8,7 @@ Please feel free to alert any problems and/or suggestions to the code.
 
 Users are free to select frequency of tracking manga, date and time to be notified if there is an update, and edit their manga archieve.//
 
-Steps to use:
+Steps to Get:
 1. Clone Repository.
 3. Head over to chrome://extensions/
 4. Click on "developer mode" in the top-right corner
@@ -17,5 +17,3 @@ Steps to use:
 
 All the best!
 
-
-<img width="1440" alt="Screen Shot 2022-10-17 at 10 10 46 PM" src="https://user-images.githubusercontent.com/59126714/196319021-a76afcbd-2159-447e-a7e7-7f2f1ea200c1.png">
