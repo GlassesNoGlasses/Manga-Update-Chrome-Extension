@@ -16,3 +16,6 @@ Steps to use:
 6. Enjoy!
 
 All the best!
+
+
+<img width="1440" alt="Screen Shot 2022-10-17 at 10 10 46 PM" src="https://user-images.githubusercontent.com/59126714/196319021-a76afcbd-2159-447e-a7e7-7f2f1ea200c1.png">
